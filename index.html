@@ -23,10 +23,10 @@
                     },
                     colors: {
                         brand: {
-                            light: '#e6efff', /* Azul muy claro para fondos tenues */
-                            primary: '#09398a', /* Color principal */
-                            accent: '#072b69', /* Variante un poco más oscura para hovers */
-                            dark: '#00153b', /* Azul muy oscuro para contrastes y fondos */
+                            light: '#e6efff', 
+                            primary: '#09398a', 
+                            accent: '#072b69', 
+                            dark: '#00153b', 
                         }
                     }
                 }
@@ -41,26 +41,51 @@
         .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
         .is-visible { opacity: 1 !important; transform: translate(0) !important; }
 
-        /* Estilos del Slider con Branding Real */
+        /* Estilos del Slider */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #09398a; cursor: pointer; margin-top: -10px; box-shadow: 0 0 10px rgba(9, 57, 138, 0.5); transition: transform 0.1s; }
         input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 8px; cursor: pointer; background: #334155; border-radius: 4px; }
         input[type=range]:focus { outline: none; }
 
-        /* Animaciones para el Formulario Multi-paso */
+        /* Formulario Multi-paso */
         .step-container { display: none; opacity: 0; transform: translateX(20px); transition: all 0.4s ease-out; }
         .step-container.active { display: block; opacity: 1; transform: translateX(0); }
         
-        /* Botones de selección tipo Quiz */
         .quiz-btn { width: 100%; text-align: left; padding: 1rem 1.5rem; border-radius: 0.75rem; border: 2px solid #e2e8f0; background-color: white; font-weight: 600; color: #334155; transition: all 0.2s; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
         .quiz-btn:hover { border-color: #09398a; background-color: #e6efff; color: #00153b; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(9, 57, 138, 0.1); }
-        .quiz-btn:active { transform: translateY(0); }
         
-        /* Loading spinner */
         .loader { border: 3px solid #f3f3f3; border-top: 3px solid #09398a; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: none; margin: 0 auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Carrusel Bucle Infinito CSS */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            animation: scroll 40s linear infinite;
+            width: max-content;
+        }
     </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '813371341386724');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=813371341386724&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body class="font-sans text-slate-800 bg-white min-h-screen antialiased">
 
@@ -76,7 +101,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- 1. Hero Section -->
     <section class="pt-32 pb-16 sm:pt-40 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
@@ -84,52 +109,52 @@
             <div class="flex flex-col items-start text-left">
                 <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand-primary font-medium text-sm mb-6 border border-blue-100">
                     <i data-lucide="shield-check" class="w-4 h-4"></i>
-                    <span>Más de 10 años garantizando la seguridad energética</span>
+                    <span>Más de 10 años ganándole a la CFE</span>
                 </div>
                 
                 <h1 class="reveal-up text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-brand-dark tracking-tight leading-tight" style="transition-delay: 0.1s;">
-                    Descubra si su Propiedad Califica para <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">Eliminar su Recibo de CFE</span>.
+                    Descubra si su Propiedad Califica para <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">Eliminar su Recibo de CFE</span>
                 </h1>
 
                 <p class="reveal-up mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed" style="transition-delay: 0.2s;">
-                    Pagando lo mismo, o incluso <strong>menos de lo que paga por su recibo de luz.</strong><br><br>
+                    Pagando lo mismo, o incluso <strong>menos de lo que paga por su recibo de luz actualmente.</strong><br><br>
                     Complete este breve cuestionario de 30 segundos para ver si puede <strong>congelar su tarifa eléctrica</strong> y comenzar a pagar solo el <strong>mínimo</strong>. Enganche desde <strong>20%</strong> y financiamiento de hasta <strong>48 meses</strong>.
                 </p>
 
                 <p class="reveal-up mt-6 text-sm text-slate-500 font-medium" style="transition-delay: 0.3s;">
-                    <i data-lucide="zap" class="inline w-4 h-4 mb-0.5 text-brand-primary"></i> Especialistas en Tarifa DAC y comercios de alto consumo.
+                    <i data-lucide="zap" class="inline w-4 h-4 mb-0.5 text-brand-primary"></i> Especialistas en Sistemas Fotovoltáicos e Inversores.
                 </p>
             </div>
 
             <!-- Formulario Funnel (Derecha) -->
             <div id="hero-form" class="reveal-up w-full max-w-lg mx-auto lg:max-w-none relative" style="transition-delay: 0.4s;">
                 <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
-                    <!-- Barra de progreso -->
+                    
                     <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex justify-between items-center">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider" id="step-indicator">Paso 1 de 4</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider" id="step-indicator">Paso 1 de 3</span>
                         <div class="w-1/2 bg-slate-200 rounded-full h-2">
-                            <div class="bg-brand-primary h-2 rounded-full transition-all duration-500" id="progress-bar" style="width: 25%;"></div>
+                            <div class="bg-brand-primary h-2 rounded-full transition-all duration-500" id="progress-bar" style="width: 33.33%;"></div>
                         </div>
                     </div>
 
                     <div class="p-6 sm:p-8 min-h-[380px] flex flex-col justify-center">
                         
-                        <!-- Paso 1: Tipo de Propiedad -->
+                        <!-- Paso 1: Consumo -->
                         <div class="step-container active" id="step-1">
-                            <h3 class="text-xl font-bold text-brand-dark mb-6 text-center">¿Para qué tipo de inmueble requiere el sistema?</h3>
-                            <div class="space-y-3">
-                                <button type="button" class="quiz-btn text-sm" onclick="nextStep(2)">
-                                    <span class="flex items-center gap-3"><i data-lucide="home" class="text-brand-primary w-5 h-5"></i> Casa Habitación</span>
-                                    <i data-lucide="chevron-right" class="text-slate-400 w-5 h-5"></i>
-                                </button>
-                                <button type="button" class="quiz-btn text-sm" onclick="nextStep(2)">
-                                    <span class="flex items-center gap-3"><i data-lucide="store" class="text-brand-primary w-5 h-5"></i> Negocio / Local</span>
-                                    <i data-lucide="chevron-right" class="text-slate-400 w-5 h-5"></i>
-                                </button>
-                                <button type="button" class="quiz-btn text-sm" onclick="nextStep(2)">
-                                    <span class="flex items-center gap-3"><i data-lucide="factory" class="text-brand-primary w-5 h-5"></i> Industria</span>
-                                    <i data-lucide="chevron-right" class="text-slate-400 w-5 h-5"></i>
-                                </button>
+                            <h3 class="text-xl font-bold text-brand-dark mb-4 text-center">¿De cuánto fue su último recibo bimestral?</h3>
+                            <div class="space-y-4 mt-6">
+                                <div>
+                                    <label for="form-bill-input" class="block text-sm font-semibold text-slate-500 mb-2 text-center">Ingrese el monto aproximado (MXN)</label>
+                                    <div class="relative max-w-xs mx-auto">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 font-bold text-lg">$</span>
+                                        <input type="number" id="form-bill-input" inputmode="numeric" pattern="[0-9]*" placeholder="0" class="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-slate-200 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition-all text-xl font-bold text-brand-dark" required />
+                                    </div>
+                                </div>
+                                <div class="max-w-xs mx-auto pt-4">
+                                    <button type="button" class="w-full py-3.5 text-base font-bold rounded-xl text-white bg-brand-primary hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-primary/30 flex items-center justify-center gap-2" onclick="validateStep1()">
+                                        Siguiente <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -143,35 +168,15 @@
                                     <i data-lucide="chevron-right" class="text-slate-400 w-5 h-5"></i>
                                 </button>
                                 <button type="button" class="quiz-btn text-sm" onclick="nextStep(3)">
-                                    <span class="flex items-center gap-3"><i data-lucide="shield" class="text-indigo-600 w-5 h-5"></i> Respaldo: Baterías para apagones</span>
+                                    <span class="flex items-center gap-3"><i data-lucide="shield" class="text-indigo-600 w-5 h-5"></i> Ahorro + Respaldo: Tener energía en apagones</span>
                                     <i data-lucide="chevron-right" class="text-slate-400 w-5 h-5"></i>
                                 </button>
                             </div>
-                            <button class="mt-4 text-sm text-slate-400 hover:text-brand-primary font-medium transition-colors" onclick="prevStep(1)"><i data-lucide="arrow-left" class="inline w-4 h-4"></i> Atrás</button>
+                            <button type="button" class="mt-4 text-sm text-slate-400 hover:text-brand-primary font-medium transition-colors" onclick="prevStep(1)"><i data-lucide="arrow-left" class="inline w-4 h-4"></i> Atrás</button>
                         </div>
 
-                        <!-- Paso 3: Consumo -->
+                        <!-- Paso 3: Captura de Datos -->
                         <div class="step-container" id="step-3">
-                            <h3 class="text-xl font-bold text-brand-dark mb-4 text-center">¿De cuánto es su último recibo bimestral?</h3>
-                            <div class="space-y-2">
-                                <button type="button" class="quiz-btn text-sm py-3" onclick="nextStep(4)">
-                                    <span>Menos de $3,000 MXN</span> <i data-lucide="chevron-right" class="text-slate-400 w-4 h-4"></i>
-                                </button>
-                                <button type="button" class="quiz-btn text-sm py-3" onclick="nextStep(4)">
-                                    <span>$3,000 a $6,000 MXN</span> <i data-lucide="chevron-right" class="text-slate-400 w-4 h-4"></i>
-                                </button>
-                                <button type="button" class="quiz-btn text-sm py-3" onclick="nextStep(4)">
-                                    <span>$6,000 a $15,000 MXN (DAC)</span> <i data-lucide="chevron-right" class="text-slate-400 w-4 h-4"></i>
-                                </button>
-                                <button type="button" class="quiz-btn text-sm py-3" onclick="nextStep(4)">
-                                    <span>Más de $15,000 MXN</span> <i data-lucide="chevron-right" class="text-slate-400 w-4 h-4"></i>
-                                </button>
-                            </div>
-                            <button class="mt-4 text-sm text-slate-400 hover:text-brand-primary font-medium transition-colors" onclick="prevStep(2)"><i data-lucide="arrow-left" class="inline w-4 h-4"></i> Atrás</button>
-                        </div>
-
-                        <!-- Paso 4: Captura de Datos -->
-                        <div class="step-container" id="step-4">
                             <div class="text-center mb-6">
                                 <div class="w-12 h-12 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-3">
                                     <i data-lucide="pie-chart" class="w-6 h-6 text-brand-primary"></i>
@@ -190,13 +195,14 @@
                                     <input type="tel" id="lead-phone" placeholder="999 XXX XXXX" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition-all text-sm" required />
                                 </div>
                                 <button type="submit" id="submit-btn" class="w-full py-3.5 text-base font-bold rounded-xl text-white bg-brand-primary hover:bg-brand-accent transition-all shadow-lg hover:shadow-brand-primary/30 mt-2 flex items-center justify-center gap-2">
-                                    <span>Ver Viabilidad Ahora</span>
+                                    <span>Dejar de Regalar tu Dinero a la CFE</span>
                                     <div class="loader" id="btn-loader"></div>
                                 </button>
                                 <p class="text-center text-[10px] text-slate-400 mt-2 flex justify-center items-center gap-1">
                                     <i data-lucide="lock" class="w-3 h-3"></i> Sus datos son estrictamente confidenciales.
                                 </p>
                             </form>
+                            <button type="button" class="mt-4 text-sm text-slate-400 hover:text-brand-primary font-medium transition-colors w-full text-left" onclick="prevStep(2)"><i data-lucide="arrow-left" class="inline w-4 h-4"></i> Atrás</button>
                         </div>
 
                         <!-- Mensaje de Éxito Final -->
@@ -214,11 +220,9 @@
         </div>
     </section>
 
-    <!-- Context & Agitation + ROI Calculator (Sección 4 movida aquí) -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- 2. Context & Agitation (El Dolor) -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-100">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
-            
-            <!-- Hook Lógico y Reptiliano -->
             <div class="reveal-left">
                 <div class="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-dark/20">
                     <i data-lucide="battery-warning" class="w-8 h-8 text-yellow-400"></i>
@@ -228,7 +232,7 @@
                 </h2>
                 <div class="space-y-6 text-lg text-slate-600">
                     <p>
-                        En Mérida, los apagones y el calor extremo son un riesgo real. Si está en <strong>Tarifa DAC</strong>, su recibo no le garantiza servicio cuando más lo necesita.
+                        En Mérida, los apagones y el calor extremo son un riesgo real. Y tu recibo no te garantiza tener energía cuando hay apagones.
                     </p>
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
@@ -248,124 +252,88 @@
                     </ul>
                 </div>
             </div>
-            
-            <!-- Cost of Inaction Calculator (Lógica / Neocórtex) -->
-            <div class="bg-brand-dark text-white p-6 sm:p-10 rounded-3xl shadow-2xl reveal-right relative overflow-hidden">
+            <div class="reveal-right relative hidden lg:block">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl">
+                    <img src="proyecto.webp" alt="Instalación de paneles solares en Mérida" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex items-end p-8">
+                        <p class="text-white text-xl font-bold">Convierta un pasivo mensual en un activo patrimonial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Calculadora Dinámica (La Solución) -->
+    <section class="py-20 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 reveal-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-4">Calculadora de Impacto Inmediato</h2>
+                <p class="text-slate-600 text-lg">Vea exactamente cuántos paneles necesita y cuánto ahorrará desde el día 1.</p>
+            </div>
+
+            <div class="bg-brand-dark text-white p-6 sm:p-10 rounded-3xl shadow-2xl reveal-up relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-5"><i data-lucide="calculator" class="w-32 h-32 text-white"></i></div>
                 <div class="relative z-10">
-                    <h3 class="text-2xl font-bold mb-2 text-white">Calculadora de Opciones: Ahorro vs. Respaldo</h3>
-                    <p class="text-blue-200 mb-6 text-sm">¿Cuánto le cuesta decidir no instalar paneles hoy?</p>
-                    
-                    <label class="block text-lg font-medium mb-4">
-                        Su último recibo de CFE:
-                        <span id="current-bill-display" class="text-3xl font-black text-blue-400 block mt-1">$4,000</span>
+                    <label class="block text-lg font-medium mb-4 text-center sm:text-left">
+                        Su último recibo de CFE (Bimestral):
+                        <span id="current-bill-display" class="text-4xl font-black text-blue-400 block mt-2">$2,500</span>
                     </label>
-                    <input type="range" id="bill-slider" min="1500" max="15000" step="500" value="4000" class="mb-6" />
+                    <input type="range" id="bill-slider" min="500" max="15000" step="500" value="2500" class="mb-8" />
                     
-                    <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/10 mb-6">
-                        <span class="text-slate-300 text-sm">Costo CFE proyectado a 10 años:</span>
-                        <span id="cfe-10y" class="font-bold text-red-400 text-xl">$240,000</span>
-                    </div>
-
-                    <!-- Dos Caminos (Nivel 1 y Nivel 2) -->
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <!-- Nivel 1: Ahorro -->
-                        <div class="bg-brand-primary/20 p-4 rounded-xl border border-brand-primary/50 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i data-lucide="piggy-bank" class="w-4 h-4 text-green-400"></i>
-                                    <p class="text-white text-sm font-bold">Nivel 1: Sistema Ahorro</p>
-                                </div>
-                                <p class="text-[11px] text-blue-200 mb-3 leading-tight">Enfocado 100% en eliminar su recibo CFE. Sin baterías.</p>
-                                <span id="system-cost-tier1" class="font-bold text-white text-xl block">~$85,000</span>
-                            </div>
-                            <div class="mt-3 pt-3 border-t border-brand-primary/30">
-                                <p class="text-xs text-green-400 font-semibold">Se paga solo en <span id="roi-tier1">3.5</span> años.</p>
-                            </div>
+                    <div id="calculator-results-grid" class="grid sm:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-brand-primary/20 p-5 rounded-xl border border-brand-primary/50 text-center flex flex-col justify-center transition-all">
+                            <i data-lucide="layout-grid" class="w-8 h-8 text-blue-300 mx-auto mb-3"></i>
+                            <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold mb-1">Paneles Necesarios</p>
+                            <span id="est-panels" class="font-bold text-white text-3xl block">8</span>
                         </div>
-
-                        <!-- Nivel 2: Respaldo (Premium) -->
-                        <div class="bg-gradient-to-br from-indigo-900/60 to-brand-dark p-4 rounded-xl border border-indigo-500/50 relative overflow-hidden flex flex-col justify-between shadow-inner shadow-indigo-500/20">
-                            <div class="absolute top-0 right-0 bg-indigo-500 text-white text-[9px] font-bold px-2 py-1 rounded-bl-lg uppercase tracking-wider">Recomendado</div>
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <i data-lucide="shield" class="w-4 h-4 text-indigo-300"></i>
-                                    <p class="text-white text-sm font-bold">Nivel 2: Hybrid Respaldo</p>
-                                </div>
-                                <p class="text-[11px] text-indigo-200 mb-3 leading-tight">Ahorro + Baterías para mantener climas y WiFi en apagones.</p>
-                                <span id="system-cost-tier2" class="font-bold text-white text-xl block">~$170,000</span>
-                            </div>
-                            <div class="mt-3 pt-3 border-t border-indigo-500/30">
-                                <p class="text-xs text-indigo-300 font-semibold">Autonomía y seguridad total.</p>
-                            </div>
+                        <div class="bg-brand-primary/20 p-5 rounded-xl border border-brand-primary/50 text-center flex flex-col justify-center">
+                            <i data-lucide="receipt" class="w-8 h-8 text-green-400 mx-auto mb-3"></i>
+                            <p class="text-xs text-blue-200 uppercase tracking-wider font-semibold mb-1">Nuevo Recibo</p>
+                            <span id="new-bill" class="font-bold text-green-400 text-3xl block">$82</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-indigo-900/60 to-brand-dark p-5 rounded-xl border border-indigo-500/50 text-center shadow-inner shadow-indigo-500/20 flex flex-col justify-center">
+                            <i data-lucide="piggy-bank" class="w-8 h-8 text-indigo-300 mx-auto mb-3"></i>
+                            <p class="text-xs text-indigo-200 uppercase tracking-wider font-semibold mb-1">Ahorro Anual</p>
+                            <span id="annual-savings" class="font-bold text-white text-3xl block">$14,508</span>
                         </div>
                     </div>
-                    
-                    <div class="text-center mt-5">
-                        <p class="text-[11px] text-slate-400">*Cálculos promedio estimados. Requiere levantamiento técnico para cotización exacta. Precios incluyen IVA.</p>
+
+                    <!-- Mensaje para consumos altos -->
+                    <div id="custom-project-msg" class="hidden mb-8 bg-gradient-to-br from-brand-primary to-brand-dark p-6 rounded-2xl border border-brand-primary/50 text-center shadow-inner shadow-brand-primary/20 flex flex-col justify-center items-center">
+                        <i data-lucide="briefcase" class="w-10 h-10 text-blue-300 mb-3"></i>
+                        <h4 class="text-white font-bold text-2xl mb-2">Proyecto Personalizado</h4>
+                        <p class="text-blue-100 text-sm">Para consumos de esta magnitud, diseñamos una solución a la medida exacta de sus necesidades energéticas.</p>
+                    </div>
+
+                    <div class="text-center pt-6 border-t border-white/10 mt-6">
+                        <a id="wa-cta-btn" href="#" target="_blank" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-base font-bold rounded-xl text-brand-dark bg-[#25D366] hover:bg-[#20b858] transition-all shadow-lg hover:shadow-[#25D366]/30 gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                            Solicitar Cotización por WhatsApp
+                        </a>
+                        <p class="text-[11px] text-slate-400 mt-3">*Cálculos basados en tabuladores de consumo. Resultados pueden variar por tipo de tarifa e instalación.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- UVP / Authority Section (Sección 3 movida aquí) -->
-    <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 reveal-up">
-                No somos un instalador más de paneles<br>
-                <span class="text-blue-400 font-medium text-2xl sm:text-3xl mt-3 block">Instalamos un sistema profesional que cuenta con:</span>
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Beneficio 1: Huracanes y Seguro -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up">
-                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="wind"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Blindaje Anti-Huracanes Cat. 1</h3>
-                    <p class="text-blue-100 text-sm opacity-90">Estructuras reforzadas para 150 km/h. Además, nuestro financiamiento incluye de forma exclusiva un <strong>seguro contra huracanes</strong>.</p>
-                </div>
-                <!-- Beneficio 2: Monitoreo -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.1s;">
-                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="smartphone"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Monitoreo 24/7</h3>
-                    <p class="text-blue-100 text-sm opacity-90">Una plataforma para monitorear desde tu teléfono la generación de tu sistema de paneles en cualquier momento.</p>
-                </div>
-                <!-- Beneficio 3: Respaldo Baterías -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.2s;">
-                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="battery-charging"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Supervivencia al Apagón</h3>
-                    <p class="text-blue-100 text-sm opacity-90">Con nuestro Nivel Ahorro + Respaldo: Su hogar o negocio mantiene internet, refrigeración y AC operativos cuando la red de CFE colapsa.</p>
-                </div>
-                <!-- Beneficio 4: Garantía y Finanzas -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.3s;">
-                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="badge-check"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Solidez y Garantía Real</h3>
-                    <p class="text-blue-100 text-sm opacity-90">2 años de garantía en instalación, primer mantenimiento <strong>completamente gratis</strong>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nueva Sección: El Resultado -->
+    <!-- 4. El Resultado -->
     <section class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-12 reveal-up">El Resultado</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Beneficio 1 -->
                 <div class="reveal-up p-8 bg-slate-50 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow">
                     <div class="w-16 h-16 mx-auto bg-green-100 rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="trending-down" class="text-green-600 w-8 h-8"></i>
                     </div>
                     <p class="font-bold text-brand-dark text-xl leading-tight">Ahorro desde el primer mes en su recibo de luz.</p>
                 </div>
-                <!-- Beneficio 2 -->
                 <div class="reveal-up p-8 bg-slate-50 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow" style="transition-delay: 0.1s;">
                     <div class="w-16 h-16 mx-auto bg-brand-light rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="shield-check" class="text-brand-primary w-8 h-8"></i>
                     </div>
                     <p class="font-bold text-brand-dark text-xl leading-tight">Instalación profesional libre de goteras y filtraciones.</p>
                 </div>
-                <!-- Beneficio 3 -->
                 <div class="reveal-up p-8 bg-slate-50 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow" style="transition-delay: 0.2s;">
                     <div class="w-16 h-16 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
                         <i data-lucide="award" class="text-blue-600 w-8 h-8"></i>
@@ -376,7 +344,195 @@
         </div>
     </section>
 
-    <!-- Nueva Sección: Final CTA -->
+    <!-- 5. UVP / Authority Section -->
+    <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 reveal-up">
+                No somos un instalador más de paneles<br>
+                <span class="text-blue-400 font-medium text-2xl sm:text-3xl mt-3 block">Instalamos un sistema profesional que cuenta con:</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up">
+                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="wind"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Blindaje Anti-Huracanes Cat. 1</h3>
+                    <p class="text-blue-100 text-sm opacity-90">Estructuras reforzadas para 150 km/h. Además, nuestro financiamiento incluye de forma exclusiva un <strong>seguro contra huracanes</strong>.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="smartphone"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Monitoreo 24/7</h3>
+                    <p class="text-blue-100 text-sm opacity-90">Una plataforma para monitorear desde tu teléfono la generación de tu sistema de paneles en cualquier momento.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="battery-charging"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Supervivencia al Apagón</h3>
+                    <p class="text-blue-100 text-sm opacity-90">Con nuestro Nivel Ahorro + Respaldo: Su hogar o negocio mantiene internet, refrigeración y AC operativos cuando la red de CFE colapsa.</p>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 reveal-up" style="transition-delay: 0.3s;">
+                    <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg shadow-brand-primary/50"><i data-lucide="badge-check"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Solidez y Garantía Real</h3>
+                    <p class="text-blue-100 text-sm opacity-90">2 años de garantía en instalación, primer mantenimiento <strong>completamente gratis</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Proyectos Entregados (Carrusel Automático Infinito CSS) -->
+    <section class="py-20 bg-slate-50 border-t border-slate-200 overflow-hidden">
+        <div class="max-w-[100vw] mx-auto text-center reveal-up">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-12 px-4">Proyectos Entregados</h2>
+            
+            <div class="w-full relative pointer-events-none select-none">
+                <div class="flex w-max animate-infinite-scroll">
+                    <!-- Grupo 1 -->
+                    <div class="flex gap-6 pr-6">
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación residencial en Mérida" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Residencial Norte, Mérida</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación comercial" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Sector Comercial, Altabrisa</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Sistema híbrido conkal" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Sistema Híbrido, Conkal</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación de techo Cholul" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Residencial, Cholul</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grupo 2 (Duplicado exacto para bucle infinito) -->
+                    <div class="flex gap-6 pr-6">
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación residencial en Mérida" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Residencial Norte, Mérida</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación comercial" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Sector Comercial, Altabrisa</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Sistema híbrido conkal" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Sistema Híbrido, Conkal</span>
+                            </div>
+                        </div>
+                        <div class="w-[80vw] sm:w-[400px] h-[300px] rounded-3xl overflow-hidden relative shadow-lg">
+                            <img src="proyecto.webp" alt="Instalación de techo Cholul" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6">
+                                <span class="text-white font-bold text-lg">Residencial, Cholul</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Reseñas de Google Reales -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal-up">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-4">Lo que dicen nuestros clientes</h2>
+            
+            <div class="flex flex-col items-center justify-center mb-10">
+                <div class="flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-2xl border border-slate-200 shadow-sm">
+                    <span class="text-4xl font-black text-slate-800">5.0</span>
+                    <div class="flex flex-col items-start">
+                        <div class="flex text-yellow-400">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <span class="text-sm text-slate-500 font-medium">Calificación excelente en Google Maps</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <!-- Testimonio Humberto -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-brand-primary font-bold text-lg">H</div>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Humberto D.</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 gap-0.5">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm italic">"Excelente servicio, personal profesional, los recomiendo mucho 👍🏼🙏🏼…"</p>
+                </div>
+                
+                <!-- Testimonio Ariel -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-lg">A</div>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Ariel T.</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 gap-0.5">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm italic">"Excelente trabajo y lo Mejor los pagos a CFE como lo calcularon gracias. Recomiendo a la empresa ice"</p>
+                </div>
+
+                <!-- Testimonio Luis -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold text-lg">L</div>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">Luis M.</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400 gap-0.5">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm italic">"Es una empresa con experiencia en este tipo de trabajo recomendable"</p>
+                </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/RfsdszeBYz5uW9Vz5" target="_blank" class="inline-flex items-center justify-center mt-8 text-brand-primary font-bold hover:underline gap-2">
+                Ver todas las reseñas en Google <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 8. Final CTA -->
     <section class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal-up">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark mb-8 leading-tight">
@@ -403,10 +559,9 @@
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
-            // Inicializar Iconos
             lucide.createIcons();
 
-            // Intersección Observer para animaciones On-Scroll
+            // Animaciones al hacer Scroll
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -419,7 +574,7 @@
 
             document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-            // Lógica del Header Sticky
+            // Navbar Sticky
             const header = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
@@ -431,43 +586,83 @@
                 }
             }, { passive: true });
 
-            // Lógica de la Calculadora de Ahorro Estratégica (Nivel 1 vs Nivel 2)
+            // Lógica de la Calculadora con data CSV
             const slider = document.getElementById('bill-slider');
             const display = document.getElementById('current-bill-display');
             const elCfe10y = document.getElementById('cfe-10y');
-            const elSystemCostTier1 = document.getElementById('system-cost-tier1');
-            const elSystemCostTier2 = document.getElementById('system-cost-tier2');
-            const elRoiTier1 = document.getElementById('roi-tier1');
+            const elEstPanels = document.getElementById('est-panels');
+            const elNewBill = document.getElementById('new-bill');
+            const elAnnualSavings = document.getElementById('annual-savings');
+            const waCtaBtn = document.getElementById('wa-cta-btn');
+            const resultsGrid = document.getElementById('calculator-results-grid');
+            const customMsg = document.getElementById('custom-project-msg');
 
             const formatCurrency = (value) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(value);
 
+            const csvData = [
+                { bill: 500, newBill: 75, panels: 4, annualSavings: 2550 },
+                { bill: 1000, newBill: 154, panels: 4, annualSavings: 5076 },
+                { bill: 1500, newBill: 75, panels: 6, annualSavings: 8550 },
+                { bill: 2000, newBill: 332, panels: 6, annualSavings: 10008 },
+                { bill: 2500, newBill: 82, panels: 8, annualSavings: 14508 },
+                { bill: 3000, newBill: 206, panels: 8, annualSavings: 16764 },
+                { bill: 3500, newBill: 328, panels: 8, annualSavings: 19032 },
+                { bill: 4000, newBill: 78, panels: 10, annualSavings: 23532 },
+                { bill: 4500, newBill: 193, panels: 10, annualSavings: 25842 },
+                { bill: 5000, newBill: 322, panels: 10, annualSavings: 28068 },
+                { bill: 5500, newBill: 396, panels: 10, annualSavings: 30624 },
+                { bill: 6000, newBill: 196, panels: 12, annualSavings: 34800 },
+                { bill: 6500, newBill: 318, panels: 12, annualSavings: 37050 },
+                { bill: 7000, newBill: 390, panels: 12, annualSavings: 39660 },
+                { bill: 7500, newBill: 192, panels: 14, annualSavings: 43850 },
+                { bill: 8000, newBill: 315, panels: 14, annualSavings: 46110 },
+                { bill: 8500, newBill: 385, panels: 14, annualSavings: 48690 },
+                { bill: 9000, newBill: 531, panels: 14, annualSavings: 50814 },
+                { bill: 9500, newBill: 309, panels: 16, annualSavings: 55146 },
+                { bill: 10000, newBill: 379, panels: 16, annualSavings: 57726 },
+                { bill: 10500, newBill: 100, panels: 20, annualSavings: 62400 },
+                { bill: 15000, newBill: 100, panels: 30, annualSavings: 89400 }
+            ];
+
             const updateCalculator = () => {
+                if (!slider) return;
+                
                 const currentBill = Number(slider.value);
-                const annualCost = currentBill * 6;
-                const cost10Years = annualCost * 10;
+                const cost10Years = currentBill * 6 * 10;
 
-                // Nivel 1: Sistema de Ahorro (On-grid)
-                // Base: ~$85,000, ajusta ligeramente según el consumo
-                let tier1Cost = 85000; 
-                if(currentBill < 3000) tier1Cost = 65000;
-                if(currentBill > 6000) tier1Cost = currentBill * 15;
+                if (display) display.textContent = formatCurrency(currentBill);
+                if (elCfe10y) elCfe10y.textContent = formatCurrency(cost10Years);
 
-                // Nivel 2: Sistema de Respaldo (Hybrid/Off-grid)
-                // Base: ~$170,000 (el doble del Nivel 1 como sugerido en la estrategia)
-                let tier2Cost = 170000;
-                if(currentBill < 3000) tier2Cost = 140000;
-                if(currentBill > 6000) tier2Cost = tier1Cost * 2;
+                let message = "";
 
-                const roiYears = (tier1Cost / annualCost).toFixed(1);
+                if (currentBill >= 10500) {
+                    if (resultsGrid) resultsGrid.classList.add('hidden');
+                    if (customMsg) customMsg.classList.remove('hidden');
+                    
+                    message = encodeURIComponent(`Hola, utilicé su calculadora y pago $${currentBill} al bimestre de luz, ¿me pueden hacer una cotización para un proyecto personalizado?`);
+                } else {
+                    if (resultsGrid) resultsGrid.classList.remove('hidden');
+                    if (customMsg) customMsg.classList.add('hidden');
 
-                display.textContent = formatCurrency(currentBill);
-                elCfe10y.textContent = formatCurrency(cost10Years);
-                elSystemCostTier1.textContent = `~${formatCurrency(tier1Cost)}`;
-                elSystemCostTier2.textContent = `~${formatCurrency(tier2Cost)}`;
-                elRoiTier1.textContent = roiYears;
+                    let matchedData = csvData.find(d => d.bill >= currentBill);
+                    if (!matchedData) matchedData = csvData[csvData.length - 1];
+
+                    const annualSavings = matchedData.annualSavings;
+
+                    if (elEstPanels) elEstPanels.textContent = matchedData.panels;
+                    if (elNewBill) elNewBill.textContent = formatCurrency(matchedData.newBill);
+                    if (elAnnualSavings) elAnnualSavings.textContent = formatCurrency(annualSavings);
+
+                    message = encodeURIComponent(`Hola, utilicé su calculadora y creo que necesito ${matchedData.panels} paneles y pago $${currentBill} al bimestre de luz, ¿me pueden hacer una cotización?`);
+                }
+
+                if (waCtaBtn) {
+                    const phoneNumber = "529992162125"; 
+                    waCtaBtn.href = `https://wa.me/${phoneNumber}?text=${message}`;
+                }
             };
 
-            if(slider) {
+            if (slider) {
                 slider.addEventListener('input', updateCalculator);
                 updateCalculator(); 
             }
@@ -476,22 +671,34 @@
         // ==========================================
         // LÓGICA DEL FUNNEL MULTI-PASO (QUIZ)
         // ==========================================
-        const totalSteps = 4;
+        const totalSteps = 3;
 
         function updateProgress(step) {
             const progressBar = document.getElementById('progress-bar');
             const stepIndicator = document.getElementById('step-indicator');
-            const percentage = (step / totalSteps) * 100;
-            progressBar.style.width = `${percentage}%`;
-            stepIndicator.textContent = `Paso ${step} de ${totalSteps}`;
+            if (progressBar && stepIndicator) {
+                const percentage = (step / totalSteps) * 100;
+                progressBar.style.width = `${percentage}%`;
+                stepIndicator.textContent = `Paso ${step} de ${totalSteps}`;
+            }
+        }
+
+        function validateStep1() {
+            const inputEl = document.getElementById('form-bill-input');
+            if (inputEl) {
+                const input = inputEl.value;
+                if(input && Number(input) > 0) {
+                    nextStep(2);
+                } else {
+                    alert('Por favor, ingrese un monto válido.');
+                }
+            }
         }
 
         function showStep(stepNumber) {
-            // Ocultar todos los contenedores
             document.querySelectorAll('.step-container').forEach(el => {
                 el.classList.remove('active');
             });
-            // Mostrar el solicitado
             const stepEl = document.getElementById(`step-${stepNumber}`);
             if(stepEl) {
                 setTimeout(() => {
@@ -510,30 +717,37 @@
             updateProgress(stepNumber);
         }
 
-        // Manejo del envío del formulario final
-        document.getElementById('final-lead-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('submit-btn');
-            const loader = document.getElementById('btn-loader');
-            const btnText = btn.querySelector('span');
-            
-            // Simular carga (UX)
-            btnText.style.display = 'none';
-            loader.style.display = 'block';
-            btn.disabled = true;
+        const leadForm = document.getElementById('final-lead-form');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const btn = document.getElementById('submit-btn');
+                const loader = document.getElementById('btn-loader');
+                const btnText = btn.querySelector('span');
+                
+                if (btnText && loader && btn) {
+                    btnText.style.display = 'none';
+                    loader.style.display = 'block';
+                    btn.disabled = true;
 
-            setTimeout(() => {
-                // Simulación de envío a CRM/Webhook
-                document.getElementById('step-indicator').parentElement.style.display = 'none';
-                document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
-                
-                setTimeout(() => {
-                    document.getElementById('step-success').classList.add('active');
-                }, 50);
-                
-            }, 1500);
-        });
+                    setTimeout(() => {
+                        const stepIndicator = document.getElementById('step-indicator');
+                        if (stepIndicator && stepIndicator.parentElement) {
+                            stepIndicator.parentElement.style.display = 'none';
+                        }
+                        
+                        document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+                        
+                        setTimeout(() => {
+                            const successEl = document.getElementById('step-success');
+                            if (successEl) successEl.classList.add('active');
+                        }, 50);
+                        
+                    }, 1500);
+                }
+            });
+        }
     </script>
 </body>
 </html>
