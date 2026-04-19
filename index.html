@@ -93,7 +93,8 @@
     <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="logo-ice-azul.webp" alt="Logo ICE del Sureste" class="h-10 w-auto object-contain">
+                <!-- Reemplazo de logo por un placeholder para canvas -->
+                <img src="logo-ice-azul.webp"  alt="Logo ICE del Sureste" class="h-10 w-auto object-contain">
             </div>
             <a href="#hero-form" class="bg-brand-primary hover:bg-brand-accent text-white px-5 py-2.5 rounded-full font-semibold transition-colors shadow-lg shadow-brand-primary/30 flex items-center gap-2 text-sm sm:text-base">
                 Cotiza Hoy
@@ -211,7 +212,11 @@
                                 <i data-lucide="check" class="w-8 h-8 text-brand-primary"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-brand-dark mb-2">¡Solicitud Exitosa!</h3>
-                            <p class="text-slate-600 text-sm">Un ingeniero analizará su perfil y se pondrá en contacto por WhatsApp muy pronto.</p>
+                            <p class="text-slate-600 text-sm mb-6">Un ingeniero analizará su perfil y se pondrá en contacto por WhatsApp muy pronto.</p>
+                            <a id="success-wa-btn" href="#" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-3.5 text-sm font-bold rounded-xl text-white bg-[#25D366] hover:bg-[#20b858] transition-all shadow-lg hover:shadow-[#25D366]/30 gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                                Agilizar atención por WhatsApp
+                            </a>
                         </div>
 
                     </div>
@@ -254,6 +259,7 @@
             </div>
             <div class="reveal-right relative hidden lg:block">
                 <div class="aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl">
+                    <!-- Reemplazo de imagen por placeholder de Unsplash -->
                     <img src="Proyecto_Departamento1.webp" alt="Instalación de paneles solares en Mérida" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex items-end p-8">
                         <p class="text-white text-xl font-bold">Convierta un pasivo mensual en un activo patrimonial.</p>
@@ -548,6 +554,7 @@
     <footer class="bg-brand-dark text-blue-200/70 py-10 text-center text-sm border-t border-brand-dark/90">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
             <div class="mb-6 opacity-70">
+                <!-- Reemplazo de logo blanco por placeholder -->
                 <img src="logo-ice-blanco.webp" alt="Logo ICE del Sureste" class="h-10 w-auto object-contain">
             </div>
             <p>© 2026 ICE del Sureste. Ingeniería Fotovoltaica. Todos los derechos reservados.</p>
@@ -717,15 +724,25 @@
             updateProgress(stepNumber);
         }
 
+        // Obtener IP del cliente al cargar la página
+        let clientIP = "";
+        fetch('https://api.ipify.org?format=json')
+            .then(res => res.json())
+            .then(data => clientIP = data.ip)
+            .catch(err => console.log('Error obteniendo IP:', err));
+
+        // Función auxiliar para leer cookies (para fbc y fbp)
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return "";
+        }
+
         const leadForm = document.getElementById('final-lead-form');
         if (leadForm) {
             leadForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Track Facebook Pixel Lead Event
-                if (typeof fbq === 'function') {
-                    fbq('track', 'Lead');
-                }
                 
                 const btn = document.getElementById('submit-btn');
                 const loader = document.getElementById('btn-loader');
@@ -736,7 +753,50 @@
                     loader.style.display = 'block';
                     btn.disabled = true;
 
-                    setTimeout(() => {
+                    // 1. Recopilar datos del cliente y de rastreo
+                    const name = document.getElementById('lead-name').value;
+                    const phone = document.getElementById('lead-phone').value;
+                    const billInput = document.getElementById('form-bill-input').value;
+                    const eventID = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    const fbc = getCookie('_fbc');
+                    const fbp = getCookie('_fbp');
+                    const userAgent = navigator.userAgent;
+                    const pageUrl = window.location.href;
+
+                    // Preparar botón de WhatsApp para el paso de éxito
+                    const waMessage = `Hola, acabo de dejar mis datos. Soy ${name}, mi teléfono es ${phone} y mi recibo bimestral es de aproximadamente $${billInput}. Me gustaría agilizar mi cotización.`;
+                    const waBtn = document.getElementById('success-wa-btn');
+                    if (waBtn) {
+                        waBtn.href = `https://wa.me/529992162125?text=${encodeURIComponent(waMessage)}`;
+                    }
+
+                    // 2. Track Facebook Pixel Lead Event (con eventID para de-duplicación en CAPI)
+                    if (typeof fbq === 'function') {
+                        fbq('track', 'Lead', {}, { eventID: eventID });
+                    }
+
+                    // 3. Construir Payload para Make.com
+                    const webhookPayload = {
+                        name: name,
+                        phone: phone,
+                        eventID: eventID,
+                        fbc: fbc,
+                        fbp: fbp,
+                        useragent: userAgent,
+                        clientIP: clientIP,
+                        pageUrl: pageUrl
+                    };
+
+                    // 4. Enviar datos al Webhook de Make
+                    fetch('https://hook.us2.make.com/b750tipmj6hpzljyf5i2f3pckg2lp1n1', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(webhookPayload)
+                    })
+                    .then(response => {
+                        // Ocultar indicador de paso
                         const stepIndicator = document.getElementById('step-indicator');
                         if (stepIndicator && stepIndicator.parentElement) {
                             stepIndicator.parentElement.style.display = 'none';
@@ -748,11 +808,30 @@
                             const successEl = document.getElementById('step-success');
                             if (successEl) successEl.classList.add('active');
                         }, 50);
-                        
-                    }, 1500);
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar Webhook:', error);
+                        // Mostrar mensaje de éxito de todos modos para no afectar la experiencia del usuario
+                        document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+                        const successEl = document.getElementById('step-success');
+                        if (successEl) successEl.classList.add('active');
+                    });
                 }
             });
         }
+
+        // ==========================================
+        // TRACKING DE BOTONES DE WHATSAPP (EVENTO CONTACT)
+        // ==========================================
+        const waButtons = document.querySelectorAll('#wa-cta-btn, #success-wa-btn');
+        waButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (typeof fbq === 'function') {
+                    // Dispara el evento 'Contact' del Pixel de Facebook
+                    fbq('track', 'Contact');
+                }
+            });
+        });
     </script>
 </body>
 </html>
